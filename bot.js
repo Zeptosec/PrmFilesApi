@@ -34,7 +34,8 @@ client.on('interactionCreate', async interaction => {
 async function saveFile(file) {
   if (client.isReady) {
     console.log(file.name);
-    console.log(process.version);
+    console.log(process.env.CHANNEL_ID);
+
     let msg = await client.channels.cache.get(process.env.CHANNEL_ID).send({
       files: [{
         attachment: file.data,
