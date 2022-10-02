@@ -31,6 +31,7 @@ app.post('/api/upload',
         //const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
         //await AddFileToDB(location, files.file.name, ip, null);
         res.status(200).json({ msg: "File saved!", location });
-    })
-
-app.listen(process.env.PORT || 3000)
+    }
+)
+let port = process.env.PORT || 3000;
+app.listen(port, () => console.log("running on port: " + port))
