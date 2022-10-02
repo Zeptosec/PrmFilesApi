@@ -5,17 +5,17 @@ const fileUpload = require('express-fileupload')
 const fileSizeLimiter = require('./middleware/fileSizeLimiter');
 const fileNameLimiter = require('./middleware/fileNameLimiter');
 
-const { AddFileToDB } = require('./database');
+//const { AddFileToDB } = require('./database');
 const { saveFile } = require('./bot');
 
-const userRoutes = require('./routes/user');
+//const userRoutes = require('./routes/user');
 
 var cors = require('cors')
 const app = express()
 app.use(cors({}));
 app.use(express.json());
 
-app.use('/api/user', userRoutes);
+//app.use('/api/user', userRoutes);
 
 app.get('/', function (req, res) {
     res.send('Hello Worldd')
