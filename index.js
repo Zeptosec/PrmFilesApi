@@ -12,14 +12,13 @@ const { saveFile } = require('./bot');
 
 var cors = require('cors')
 const app = express()
-app.use(cors({}));
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 
 //app.use('/api/user', userRoutes);
 
 app.get('/', function (req, res) {
-    res.send('Hello Worldd')
-    saveFile("asd");
+    res.status(200).json({ msg: 'Return to https://permafilestore.netlify.app' });
 })
 
 app.post('/api/upload',
