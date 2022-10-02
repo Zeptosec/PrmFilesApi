@@ -6,7 +6,7 @@ const fileSizeLimiter = require('./middleware/fileSizeLimiter');
 const fileNameLimiter = require('./middleware/fileNameLimiter');
 
 //const { AddFileToDB } = require('./database');
-//const { saveFile } = require('./bot');
+const { saveFile } = require('./bot');
 
 //const userRoutes = require('./routes/user');
 
@@ -27,10 +27,10 @@ app.post('/api/upload',
     fileNameLimiter,
     async (req, res) => {
         const files = req.files;
-        //const location = await saveFile(files.file);
+        const location = await saveFile(files.file);
         //const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
         //await AddFileToDB(location, files.file.name, ip, null);
-        res.status(200).json({ msg: "File saved!", location: "err" });
+        res.status(200).json({ msg: "File saved!", location });
     }
 )
 let port = process.env.PORT || 3001;
