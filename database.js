@@ -1,5 +1,4 @@
 const { createClient } = require('@supabase/supabase-js')
-
 // Create a single supabase client for interacting with your database
 const supabase = createClient('https://tqvqsgobggitvvwffmdo.supabase.co', process.env.API_KEY)
 
