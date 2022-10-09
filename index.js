@@ -41,7 +41,7 @@ const supabase = createClient('https://tqvqsgobggitvvwffmdo.supabase.co', proces
 app.get('/api/file', async (req, res) => {
   const { id } = req.query;
   if (!id) return res.status(400).json({ error: "No id was specified" });
-  const { error, data, count } = await supabase
+  const { error, data } = await supabase
     .from("Files")
     .select("fileid, name, size, chunks")
     .eq("fileid", id);
