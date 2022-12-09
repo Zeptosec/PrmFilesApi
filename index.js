@@ -76,7 +76,7 @@ app.use(express.json());
 //app.use('/api/user', userRoutes);
 
 app.get("/", function (req, res) {
-  res.status(200).json({ msg: "Return to https://permafilestore.netlify.app" });
+  res.status(200).send("Return to <a href='https://permafilestore.netlify.app'>https://permafilestore.netlify.app</a>");
 });
 
 app.post(
