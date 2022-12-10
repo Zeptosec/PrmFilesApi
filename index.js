@@ -5,6 +5,7 @@ const { createClient } = require("@supabase/supabase-js");
 const fileUpload = require("express-fileupload");
 const fileSizeLimiter = require("./middleware/fileSizeLimiter");
 const fileNameLimiter = require("./middleware/fileNameLimiter");
+const { rateLimiter, reserve } = require("./middleware/rateLimiter");
 
 //const { AddFileToDB } = require('./database');
 const { Client, GatewayIntentBits } = require("discord.js");
@@ -79,8 +80,11 @@ app.get("/", function (req, res) {
   res.status(200).send("Return to <a href='https://permafilestore.netlify.app'>https://permafilestore.netlify.app</a>");
 });
 
+app.get("/api/reserve", reserve);
+
 app.post(
   "/api/upload",
+  rateLimiter,
   fileUpload({ createParentPath: true }),
   fileSizeLimiter,
   fileNameLimiter,
